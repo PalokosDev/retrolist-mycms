@@ -35,6 +35,12 @@
         <label for="hotel_link" class="active">Hotel Link (z. B. https://habbo.de)</label>
     </div>
     <div class="form-group">
+      <label>
+        <input type="checkbox" name="is_retro_of_the_month" id="is_retro_of_the_month" value="1">
+        <span>Retro des Monats</span>
+      </label>
+    </div>
+    <div class="form-group">
         <label>
             <input type="checkbox" name="maintenance_mode" id="maintenance_mode" value="1">
             <span>Wartungsarbeiten aktivieren</span>

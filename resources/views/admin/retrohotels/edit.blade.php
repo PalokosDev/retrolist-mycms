@@ -34,6 +34,14 @@
         <input type="text" name="logo_url" id="logo_url" value="{{ old('logo_url', $retrohotel->logo_url) }}">
         <label for="logo_url" class="active">Logo URL</label>
     </div>
+    <div class="form-group">
+        <input type="hidden" name="is_retro_of_the_month" value="0">
+        <label>
+        <input type="checkbox" name="is_retro_of_the_month" id="is_retro_of_the_month" value="1"
+               {{ old('is_retro_of_the_month', $retrohotel->is_retro_of_the_month) ? 'checked' : '' }}>
+        <span>Retro des Monats</span>
+        </label>
+    </div>
     <div class="input-field">
         <input type="number" name="user_count" id="user_count" value="{{ old('user_count', $retrohotel->user_count) }}">
         <label for="user_count" class="active">User Count</label>
