@@ -19,7 +19,7 @@
 
     .retro-card {
         border: none;
-        border-radius: 12px;
+        border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -93,6 +93,23 @@
     .hotel-btn:hover {
         background: #0d47a1;
     }
+
+    /* Wartungsarbeiten Styling */
+    .user-tag.maintenance {
+        background-color: red; /* Hintergrund der Box in Rot */
+        color: white;          /* Textfarbe in Weiß */
+        border-radius: 15px;
+        padding: 5px 10px;
+        font-weight: bold;
+    }
+
+    .hotel-btn.disabled {
+        background-color: grey; /* Grauer Hintergrund für deaktivierten Button */
+        cursor: not-allowed;    /* Zeigt ein Verboten-Zeichen bei Hover */
+        color: white;
+        pointer-events: none;   /* Button komplett deaktivieren */
+        opacity: 0.6;
+    }
 </style>
 
 <div class="sort-links">
@@ -111,11 +128,22 @@
                 <img src="{{ $r->logo_url }}" alt="{{ $r->name }}" class="logo">
             </div>
             <div class="card-content">
-                <span class="card-title">{{ $r->name }}</span>
+                <h3 class="card-title">{{ $r->name }}</h3>
+
+                @if($r->maintenance_mode)
+                    <span class="user-tag maintenance">Wartungsarbeiten</span>
+                @endif
+
                 <span class="user-tag">{{ $r->user_count }} User</span>
+
                 @if($r->hotel_link)
                     <div>
-                        <a href="{{ $r->hotel_link }}" class="hotel-btn" target="_blank" rel="noopener noreferrer">Ins {{ $r->name }}</a>
+                        <a href="{{ $r->hotel_link }}" 
+                           class="hotel-btn @if($r->maintenance_mode) disabled @endif"
+                           target="_blank" rel="noopener noreferrer"
+                           @if($r->maintenance_mode) onclick="return false;" @endif>
+                            Ins {{ $r->name }}
+                        </a>
                     </div>
                 @endif
             </div>

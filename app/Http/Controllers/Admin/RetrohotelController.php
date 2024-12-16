@@ -32,16 +32,19 @@ class RetrohotelController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
+    $data = $request->validate([
         'name' => 'required',
         'logo_url' => 'required|url',
         'background_url' => 'nullable|url',
-        'user_count' => 'required|integer',
-        'hotel_link' => 'nullable|url'
-        ]);
-        Retrohotel::create($data);
-        return redirect()->route('admin.retrohotels.index')->with('success','Erstellt!');
-    }
+        'user_count' => 'required|integer|min:0',
+        'hotel_link' => 'nullable|url',
+        'maintenance_mode' => 'boolean', // Validation für das neue Feld
+    ]);
+
+    Retrohotel::create($data);
+
+    return redirect()->route('admin.retrohotels.index')->with('success', 'Retrohotel erstellt!');
+}
 
     public function edit(Retrohotel $retrohotel)
     {
@@ -50,15 +53,18 @@ class RetrohotelController extends Controller
 
     public function update(Request $request, Retrohotel $retrohotel)
     {
-       $data = $request->validate([
-       'name' => 'required',
-       'logo_url' => 'required|url',
-       'background_url' => 'nullable|url',
-       'user_count' => 'required|integer',
-       'hotel_link' => 'nullable|url'
-]);
-        $retrohotel->update($data);
-        return redirect()->route('admin.retrohotels.index')->with('success','Bearbeitet!');
+    $data = $request->validate([
+        'name' => 'required',
+        'logo_url' => 'required|url',
+        'background_url' => 'nullable|url',
+        'user_count' => 'required|integer|min:0',
+        'hotel_link' => 'nullable|url',
+        'maintenance_mode' => 'boolean', // Validation für das neue Feld
+    ]);
+
+    $retrohotel->update($data);
+
+    return redirect()->route('admin.retrohotels.index')->with('success', 'Retrohotel aktualisiert!');
     }
 
     public function destroy(Retrohotel $retrohotel)
