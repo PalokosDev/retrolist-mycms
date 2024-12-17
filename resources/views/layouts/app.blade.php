@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>MyCMS</title>
+    <title>RetroList</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Font: Space Grotesk -->
@@ -25,7 +25,6 @@
         }
         body.dark-mode {
             background: #121212;
-            color: #e0e0e0;
         }
 
         .hero-section {
@@ -207,8 +206,6 @@
         <nav>
             <div class="nav-wrapper">
                 <a href="{{ route('home') }}" class="brand-logo" style="display:flex; align-items:center;">
-                    <img src="https://via.placeholder.com/40" alt="Logo" style="margin-right:10px;">
-                    <span>MyCMS</span>
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="{{ route('retroliste') }}">Retroliste</a></li>

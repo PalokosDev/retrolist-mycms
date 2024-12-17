@@ -17,6 +17,10 @@
         color: #0d47a1;
     }
 
+    .card-title {
+        color: #000000;
+    }
+
     /* Retro des Monats Styling */
     .retro-feature {
         display: flex;
